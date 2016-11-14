@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+ 
+    <link href="css/mui.min.css" rel="stylesheet"/>
+   
+    
+</head>
+<body>
+	<div class="mui-content">
+		<form class="mui-input-group">
+       <div class="mui-input-row">
+36     <label>验证码:</label>
+37    <button type="button" id='btnVerificationCode' class="mui-btn mui-btn-outlined">获取验证码</button>
+38    <input id='VerificationCode' type="text" class="mui-input" placeholder="请输入验证码">
+39         </div>
+</form>
+	<input type="button" class="mui-input " value="点击发送验证码" onclick="sendCode(this)" />
+	</div>
+	   <script src="js/mui.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+	 <script type="text/javascript" charset="utf-8">
+ 	var clock = '';
+	var nums = 30;
+	var btn;
+	function sendCode(thisBtn)
+	{	
+		btn = thisBtn;
+		btn.disabled = true; //将按钮置为不可点击
+		btn.value = nums+'秒后可重新获取';
+		clock = setInterval(doLoop, 1000); //一秒执行一次
+	}
+	function doLoop()
+	{
+		nums--;
+		if(nums > 0){
+			btn.value = nums+'秒后可重新获取';
+		}else{
+			clearInterval(clock); //清除js定时器
+			btn.disabled = false;
+			btn.value = '点击发送验证码';
+			nums = 10; //重置时间
+		}
+	}
+    </script>
+  
+</body>
+</html>
